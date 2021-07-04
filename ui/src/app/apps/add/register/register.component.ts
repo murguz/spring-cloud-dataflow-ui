@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
             type: form.get('type').value as ApplicationType,
             uri: form.get('uri').value,
             metaDataUri: form.get('metaDataUri').value,
+            description: form.get('description').value,
             force: form.get('force').value
           };
         }
@@ -87,6 +88,7 @@ export class RegisterComponent implements OnInit {
 
   isFormEmpty(form: FormGroup) {
     return (form.get('uri').hasError('required') && form.get('name').hasError('required')
+      && form.get('description').hasError('required')
       && form.get('metaDataUri').value === '' && form.get('type').hasError('required'));
   }
 
@@ -97,6 +99,7 @@ export class RegisterComponent implements OnInit {
       type: new FormControl('', Validators.required),
       uri: new FormControl('', [AppsAddValidator.appUri, Validators.required]),
       metaDataUri: new FormControl('', AppsAddValidator.appUri),
+      description: new FormControl('', [Validators.required]),
       force: new FormControl(false)
     });
 

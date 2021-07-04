@@ -116,6 +116,7 @@ export class AppService {
   registerProp(prop: any): Observable<any> {
     let params = new HttpParams()
       .append('uri', prop.uri)
+      .append('description', prop.description)
       .append('force', prop.force.toString());
     if (prop.metaDataUri) {
       params = params.append('metadata-uri', prop.metaDataUri);
