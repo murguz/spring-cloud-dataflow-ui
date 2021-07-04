@@ -86,6 +86,24 @@
             </div>
           </div>
         </div>
+        <div class="clr-form-control clr-row"
+             [class.clr-error]="submitted && form.get('description').invalid && !isFormEmpty(form)">
+          <label class="clr-col-2 clr-control-label" for="description{{i}}">Description</label>
+          <div class="clr-control-container clr-col-10">
+            <div class="clr-textarea-wrapper">
+              <textarea
+                id="description{{i}}"
+                name="description{{i}}"
+                formControlName="description"
+                [dataflowFocus]="true"
+                class="clr-textarea"
+                style="width: 100%"></textarea>
+            </div>
+            <div class="clr-subtext" *ngIf="submitted && form.get('description').invalid && !isFormEmpty(form)">
+              Please provide a description for the app.
+            </div>
+          </div>
+        </div>
         <clr-checkbox-container>
           <clr-checkbox-wrapper>
             <input formControlName="force" type="checkbox" clrCheckbox value="false" name="force"/>
